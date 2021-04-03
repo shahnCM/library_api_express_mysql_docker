@@ -1,0 +1,18 @@
+{
+    "workSheetName": "BookRequestReport-",
+    "extention": ".xlsx",
+    "workSheetColumnNameForBookRequestReport": [
+        "tracking_id",
+        "request_id",
+        "user_id",
+        "user_name",
+        "book_id",
+        "book_name",
+        "book_slug",
+        "request_type",
+        "request_status",
+        "date_created",
+        "date_updated"
+    ],
+    "filePath" : "storage/reports/Excel"
+}

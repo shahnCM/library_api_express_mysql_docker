@@ -1,0 +1,5 @@
+{
+    "userProfileImagePath" : "storage/images/UserProfileImage",
+    "serverStaticPath": "/profile-image",
+    "sizeLimit" : 1000000
+}
