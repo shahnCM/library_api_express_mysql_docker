@@ -12,7 +12,7 @@ module.exports = {
         try {
             user = await User.findByPk(req.user.id, {attributes: ['name', 'email', 'profilePic']})
             if(!user) {
-                return res.status
+                return res.status('401').json("Unauthorized")
             }
         } catch (err) {
             console.error(err.message)
