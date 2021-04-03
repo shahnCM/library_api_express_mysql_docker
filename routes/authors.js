@@ -10,7 +10,7 @@ const Feature = require('../middlewares/FeatureMiddleware')
 // @description     Show Books All or One
 // @access          User & Admin
 router.get(
-    '/:id?', [Auth.pass, Role.admin, Feature.setDefaultPage],
+    '/:id?', [Auth.pass, Feature.setDefaultPage],
     (req, res) => AuthorController.read(req, res)
 )
 

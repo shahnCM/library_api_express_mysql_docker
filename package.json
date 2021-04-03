@@ -5,12 +5,13 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js",
     "migU": "sequelize db:migrate",
     "migD": "sequelize db:migrate:undo:all",
     "migF": "npm install && npm run migD && npm run migU",
     "docker-server": "nodemon server.js 0.0.0.0 5000",
-    "docker-boot-up": "npm run migU && npm run docker-server"
+    "docker-boot-up": "npm run migU && npm run docker-server",
+    "local-server": "nodemon server.js 127.0.0.0 5000",
+    "local-boot-up": "npm run migU && npm run local-server"
   },
   "author": "Mahir",
   "license": "ISC",

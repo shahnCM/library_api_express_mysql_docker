@@ -8,26 +8,20 @@
     "port": "3306",
     "dialect": "mysql"
   },
-  "Xdevelopment": {
+  "test": {
     "username": "user",
     "password": "pass",
-    "database": "library",
-    "host": "localhost",
-    "port": "5432",
-    "dialect": "postgres"
-  },
-  "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
-    "host": "127.0.0.1",
+    "database": "library_db",
+    "host": "mysql",
+    "port": "3306",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "user",
+    "password": "pass",
+    "database": "library_db",
+    "host": "mysql",
+    "port": "3306",
     "dialect": "mysql"
   }
 }

@@ -1,8 +1,47 @@
+# How to Run the App
+
+## Using Docker:
+- clone / download 
+- go to the project dir
+- run __`docker-compose up`__
+- wait for the __MySql db__ , __PhpMyAdmin__ & the __App__ to fully initialize
+- Once every thing is properly runnig start playing with the end points
+
+## Using Local Environment
+#### Need to have the followings installed in your machine
+1. Mysql
+2. NodeJs, Npm
+3. Globally installed sequelize-cli
+    - to install sequelize-cli globally run this -> __`npm install -g sequelize-cli`__ in the terminal
+4. Once you have all of this, go to the project dir
+    - put your database `username` `password` `host` `port` in `config/config.json` file
+5. Open terminal in the project root dir and type 
+    - __`npm install`__
+6. Make sure your mysql database is running & then in console type
+    __`npm run local-boot-up`__
+
+Take a look at scripts in `package.json` so you know what command you need to run,
+```json
+  "scripts": {
+    "start": "node server.js",
+    "migU": "sequelize db:migrate",
+    "migD": "sequelize db:migrate:undo:all",
+    "migF": "npm install && npm run migD && npm run migU",
+    "docker-server": "nodemon server.js 0.0.0.0 5000",
+    "docker-boot-up": "npm run migU && npm run docker-server",
+    "local-server": "nodemon server.js 127.0.0.0 5000",
+    "local-boot-up": "npm run migU && npm run local-server"
+  }
+```
+
+___If any problem occurs with migration, run the scripts for migration manually___
+
 ## Resources (4)
-1. Users 
-2. Books
-3. Authors
-4. Book-loans
+
+1. Books
+2. Authors
+3. Book-loans
+4. Users 
 
 ## All End Points at a Glance
 </br>___`POST`___       `localhost:5000/api/auth/register/admin/{:key}` 
@@ -41,6 +80,9 @@ ___`GET`___             `localhost:5000/api/auth/user`
 
 
 ## User Registration & Authentication
+
+### Resource: Users
+
 ### Admin Registration
 ---
 Admin registration can be turned on/off from `config/default.json`
@@ -139,14 +181,14 @@ Here we have implemented __3__ middlewares for __Access Control__
 
 
 ## Books & Authors
-Users can __view / browse__ books as a __collection__ as well as __individually__ </br>
+Users can __view / browse__ books & authors as a __collection__ as well as __individually__ </br>
 Users can also __`search`__ books by __book name / author name__
 
 Only Admins can ___`CREATE`___ , ___`UPDATE`___ , ___`DELETE`___ __books__ & __authors__
 
-### Routes(Authors)
+### Resource: Authors
 ---
-1. ___Show All___,  _Access_ __admin__ </br>
+1. ___Show All___,  _Access_ __user__ , __admin__ </br>
 ___GET___ `localhost:5000/api/authors?page=1` </br> 
 ___GET___ `localhost:5000/api/authors`  (_req.query.page is set 0 by default_)
 
@@ -170,7 +212,7 @@ ___PUT___ `localhost:5000/api/authors/1` </br>
 5. ___Delete Author___,  _Access_ __admin__ </br>
 ___DELETE___ `localhost:5000/api/authors/1` 
 
-### Routes(Books)
+### Resource: Books
 ---
 1. ___Show All___,  _Access_ __admin__ , __user__ </br>
 ___GET___ `localhost:5000/api/books?page=1` </br> 
@@ -218,7 +260,7 @@ ___DELETE___ `localhost:5000/api/books/1`
 - Users can also __view__ their own __Book-loans__
 - Only Admins can Handle the Requests for Books __Loan / Return__
 
-### Routes:(Book-loans)
+### Resource: Book-loans
 ---
 1. ___Show All Book-loans___ , _Access_ __admin__, __user__ </br>
 ___GET___ `localhost:5000/book-loans?page=0`
