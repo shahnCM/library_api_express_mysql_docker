@@ -6,17 +6,13 @@ const Auth = require('../middlewares/AuthMiddleware')
 const Role = require('../middlewares/RoleMiddleware')
 const Feature = require('../middlewares/FeatureMiddleware')
 
-// @route           GET books/:id?
-// @description     Show Books All or One
-// @access          User & Admin
+
 router.get( // Add Pagination Here ?page=1/:id?
     '/:id?', [Auth.pass, Feature.setDefaultPage],
     (req, res) => BookController.read(req, res)
 )
 
-// @route           POST books/
-// @description     Create A Book Entry
-// @access          Admin
+
 router.post(
     '/', [Auth.pass, Role.admin,
     [
@@ -41,9 +37,7 @@ router.post(
     }
 )
 
-// @route           PUT books/
-// @description     Update A Book Entry
-// @access          Admin
+
 router.put(
     '/:id', [Auth.pass, Role.admin,
     [
@@ -68,9 +62,7 @@ router.put(
     }
 )
 
-// @route           DELETE books/
-// @description     DELETE A Book Entry
-// @access          Admin
+
 router.delete(
     '/:id', [Auth.pass, Role.admin], 
     (req, res) => BookController.delete(req, res)

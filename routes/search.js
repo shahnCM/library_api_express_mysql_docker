@@ -6,9 +6,7 @@ const Auth = require('../middlewares/AuthMiddleware')
 const Role = require('../middlewares/RoleMiddleware')
 const Feature = require('../middlewares/FeatureMiddleware')
 
-// @route           GET books/:id?
-// @description     Show Books All or One
-// @access          User & Admin
+
 router.post(
     '/by-any', [Auth.pass, Feature.setDefaultPage,
     [
@@ -17,9 +15,7 @@ router.post(
     (req, res) => SearchController.findByAny(req, res)
 )
 
-// @route           GET books/:id?
-// @description     Show Books All or One
-// @access          User & Admin
+
 router.post(
     '/by-book', [Auth.pass, Feature.setDefaultPage,
     [
@@ -28,9 +24,7 @@ router.post(
     (req, res) => SearchController.findByBook(req, res)
 )
 
-// @route           GET books/:id?
-// @description     Show Books All or One
-// @access          User & Admin
+
 router.post(
     '/by-author', [Auth.pass, Feature.setDefaultPage,
     [

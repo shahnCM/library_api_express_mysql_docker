@@ -12,17 +12,13 @@ const upload = multer({
     fileFilter : fileFilter        
 })
 
-// @route           GET api/auth
-// @description     Get Logged in User
-// @access          Private
+
 router.get(
     '/user', Auth.pass,
     (req, res) => AuthController.user(req, res)
 )
 
-// @route           POST api/auth/register/admin/:key
-// @description     Register a Admin
-// @access          Public
+
 router.post(
     '/register/admin/:key', [Auth.block, Feature.adminRegistration,
     [
@@ -45,9 +41,7 @@ router.post(
     }
 )
 
-// @route           POST api/users
-// @description     Register a user
-// @access          Public
+
 router.post(
     '/register', [Auth.block,
     [
@@ -82,9 +76,7 @@ router.post(
     }
 )
 
-// @route           POST api/auth
-// @description     Login User & get Token
-// @access          Public
+
 router.post(
     '/login', [Auth.block, 
     [
